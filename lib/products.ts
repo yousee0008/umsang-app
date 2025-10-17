@@ -18,8 +18,11 @@ export const products: Product[] = [
     category: "Planters",
     subcategory: "Table Planters",
     tags: ["planter", "ceramic", "blue", "saucer"],
-    price_mrp: 0, price_sale: 0,
-    length_cm: 13, width_cm: 13, height_cm: 13,
+    price_mrp: 0,
+    price_sale: 0,
+    length_cm: 13,
+    width_cm: 13,
+    height_cm: 13,
     materials: ["stoneware ceramic"],
     colors: ["indigo blue", "brown rim"],
     finish: "gloss glaze",
@@ -28,3 +31,28 @@ export const products: Product[] = [
     display_width_cm: 13
   },
   {
+    sku: "UMS-BUST-011-BLK",
+    slug: "floral-crown-bust-matte-black-11in",
+    title: "Floral Crown Bust — Matte Black (11 inch)",
+    subtitle: "Sculptural decor with gold accent flower",
+    description: "Statement tabletop sculpture in matte black with a single gold flower accent.",
+    category: "Decor",
+    subcategory: "Sculptures & Figurines",
+    tags: ["bust", "sculpture", "figurine", "matte black", "gold accent"],
+    price_mrp: 0,
+    price_sale: 0,
+    length_cm: 13,
+    width_cm: 13,
+    height_cm: 28,
+    materials: ["polyresin"],
+    colors: ["black", "gold"],
+    finish: "matte",
+    origin: "India",
+    images: ["/images/bust.png", "/images/bust-hero.jpg"],
+    display_width_cm: 13
+  }
+];
+
+export function getProductBySlug(slug: string) {
+  return products.find(p => p.slug === slug);
+}
