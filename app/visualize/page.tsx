@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { products } from "../../lib/products";
+import { products } from "../../lib/products.js";
 
 export default function Visualize() {
   const [roomURL, setRoomURL] = useState(null);
@@ -32,23 +32,18 @@ export default function Visualize() {
     const res = await fetch("/api/analyze", { method: "POST", body: fd });
     const ans = await res.json();
 
-    // Choose product
     setWhy(ans.reason || "");
-    setActiveSlug(ans.productSlug || products[0].slug);
-    const prod = products.find(p => p.slug === (ans.productSlug || "")) || products[0];
+    const chosen = ans.productSlug || products[0].slug;
+    const prod = products.find(p => p.slug === chosen) || products[0];
+    setActiveSlug(chosen);
 
-    // Placement (bbox_norm: [x,y,w,h] in 0..1)
-    const nx = ans?.anchor?.bbox_norm?.[0] ?? 0.45;
-    const ny = ans?.anchor?.bbox_norm?.[1] ?? 0.6;
-    const nw = ans?.anchor?.bbox_norm?.[2] ?? 0.3;
-    const nh = ans?.anchor?.bbox_norm?.[3] ?? 0.2;
+    const [nx, ny, nw, nh] = ans?.anchor?.bbox_norm || [0.45, 0.6, 0.3, 0.2];
     const placeX = nx * img.naturalWidth + (nw * img.naturalWidth) / 2;
     const placeY = ny * img.naturalHeight + (nh * img.naturalHeight) * 0.1;
 
-    // Scale
     let pxPerCm = ans?.pxPerCm;
     if (!pxPerCm && nw > 0) {
-      const approxCm = 120; // assume detected surface is ~120cm wide
+      const approxCm = 120;
       pxPerCm = (nw * img.naturalWidth) / approxCm;
     }
     let nextScale = 1;
