@@ -1,0 +1,1 @@
+export default function Admin(){return(<div className='space-y-4'><h1 className='h1'>Admin</h1><p className='text-gray-600'>Placeholder admin. CSV + Supabase coming next.</p></div>);}
