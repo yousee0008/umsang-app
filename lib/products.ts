@@ -4,8 +4,8 @@ export const products = [
     slug: "indigo-glaze-planter-5in",
     title: "Indigo Glaze Planter (5 inch)",
     category: "Planters",
-    images: ["/images/planter.png"],   // ideally transparent PNG
-    display_width_cm: 13,              // real width used for scaling
+    images: ["/images/planter.png"],
+    display_width_cm: 13,
     length_cm: 13, width_cm: 13, height_cm: 13
   },
   {
@@ -13,7 +13,7 @@ export const products = [
     slug: "floral-crown-bust-matte-black-11in",
     title: "Floral Crown Bust - Matte Black (11 inch)",
     category: "Decor",
-    images: ["/images/bust.png"],      // ideally transparent PNG
+    images: ["/images/bust.png"],
     display_width_cm: 13,
     length_cm: 13, width_cm: 13, height_cm: 28
   }
