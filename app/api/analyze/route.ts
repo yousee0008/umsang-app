@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 
-export const runtime = "nodejs"; // Buffer available in Node runtime
+export const runtime = "nodejs";
 
 export async function POST(req) {
   try {
@@ -52,7 +52,9 @@ export async function POST(req) {
     try { parsed = JSON.parse(content); }
     catch { return new Response(JSON.stringify({ error: "bad JSON from model", raw: content }), { status: 502 }); }
 
-    return new Response(JSON.stringify(parsed), { headers: { "content-type": "application/json" } });
+    return new Response(JSON.stringify(parsed), {
+      headers: { "content-type": "application/json" }
+    });
   } catch (err) {
     return new Response(JSON.stringify({ error: String(err?.message || err) }), {
       status: 500, headers: { "content-type": "application/json" }
