@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "types": ["node"],
+    "target": "ES2020",
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
     "jsx": "preserve",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "target": "ES2020",
-    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+    "resolveJsonModule": true,
     "skipLibCheck": true,
+    "strict": false,
     "noEmit": true,
     "esModuleInterop": true,
-    "strict": false
+    "types": ["node"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
